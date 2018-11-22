@@ -8,3 +8,23 @@ task main()
         until ((Sensor(IN_1) or Sensor(IN_2)) < 30)
         OnFwd(OUT_A, 50);
 }
+
+//Wenn dein Code nicht funktioniert , dann testen wir das
+//Nika
+
+#define THRESHOLD 40
+task main()
+{
+ SetSensorLight(IN_3);
+ OnFwd(OUT_AC, 75);
+ while (true)
+ {
+ if (Sensor(IN_3) > THRESHOLD)
+ {
+ OnRev(OUT_C, 75);
+ Wait(100);
+ until(Sensor(IN_3) <= THRESHOLD);
+ OnFwd(OUT_AC, 75);
+ }
+ }
+}

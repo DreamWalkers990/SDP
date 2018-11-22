@@ -9,22 +9,23 @@ task main()
         OnFwd(OUT_A, 50);
 }
 
-//Wenn dein Code nicht funktioniert , dann testen wir das
-//Nika
+//korrigiertes Code Neu . >>Nika
 
-#define THRESHOLD 40
+#define Schwarz 40
 task main()
 {
  SetSensorLight(IN_3);
- OnFwd(OUT_AC, 75);
+ OnRev(OUT_AC, 75);
  while (true)
  {
  if (Sensor(IN_3) > THRESHOLD)
  {
- OnRev(OUT_C, 75);
+ OnFwd(OUT_C, 75);
  Wait(100);
  until(Sensor(IN_3) <= THRESHOLD);
- OnFwd(OUT_AC, 75);
+ OnRev(OUT_AC, 75);
  }
  }
 }
+
+//korrigiertes Code Neu. >>Nika 

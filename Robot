@@ -7,15 +7,19 @@ task main()
         OnFwd(OUT_A, 100);
         OnFwd(OUT_C, 100);
         until((Sensor(IN_1) || Sensor(IN_2)) <= 30);
-        if(Sensor(IN_1) <= 30);
+        if(Sensor(IN_1) <= 30)
+        {
             OnFwd(OUT_A, 50);
             until(Sensor(IN_1) >=30);
-        else;
+        }
+        else
+        {
             if(Sensor(IN_2) <= 30);
             OnFwd(OUT_C, 50);
             until(Sensor(IN_2) >= 30);
-    }
+        }
 
+     }
 }
 
 //korrigiertes Code Neu . >>Nika

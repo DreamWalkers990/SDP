@@ -85,3 +85,41 @@ task main()
     until((Sensor(IN_1) || Sensor(IN_2)) <= 30);
 
 }
+
+
+
+// BEST VERSION 06.12.18
+
+#define power 50
+#define slow 0
+#define time 5
+#define black_1 37
+#define black_3 34
+
+
+task main()
+{
+    SetSensorLight(IN_1);
+    SetSensorLight(IN_3);
+    while(true)
+    {
+        if(Sensor(IN_1) > black_1 && Sensor(IN_3) > black_3)
+        {
+            OnFwd(OUT_A, power);
+            OnFwd(OUT_C, power);
+            Wait(time);
+        }
+        if(Sensor(IN_1) < black_1)
+        {
+            OnFwd(OUT_A, power);
+            OnFwd(OUT_C, slow);
+            Wait(time);
+        }
+        if(Sensor(IN_3) < black_3)
+        {
+            OnFwd(OUT_C, power);
+            OnFwd(OUT_A, slow);
+            Wait(time);
+        }
+    }
+}

@@ -57,7 +57,7 @@ task main()
 
 
 
-// BEST VERSION 06.12.18 (MEILENSTEIN)
+// erste gute VERSION 06.12.18
 
 #define power 50
 #define slow 0
@@ -98,13 +98,15 @@ task main()
 
 
 
-// Version Donnerstag 13.12.2018
+// Version Donnerstag 13.12.2018 MEILENSTEIN -> beste Version
 
-#define power_straight 80
+
+#define power_straight_right 70
+#define power_straight_left 73
 #define power_curve 70
-#define slow 0
-#define time 1
-#define black_1 47
+#define slow 30
+#define time 5
+#define black_1 45
 #define black_3 55
 
 
@@ -116,20 +118,20 @@ task main()
     {
         if(Sensor(IN_1) > black_1 && Sensor(IN_3) > black_3)
         {
-            OnFwd(OUT_A, power_straight);
-            OnFwd(OUT_C, power_straight);
+            OnFwd(OUT_A, power_straight_right);
+            OnFwd(OUT_C, power_straight_left);
             Wait(time);
         }
         if(Sensor(IN_1) < black_1)
         {
             OnFwd(OUT_A, power_curve);
-            OnFwd(OUT_C, slow);
+            OnRev(OUT_C, slow);
             Wait(time);
         }
         if(Sensor(IN_3) < black_3)
         {
             OnFwd(OUT_C, power_curve);
-            OnFwd(OUT_A, slow);
+            OnRev(OUT_A, slow);
             Wait(time);
         }
     }
